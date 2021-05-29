@@ -27,7 +27,7 @@ for thresh in [ 690, 4200, 6900, 42000, 420000, 690000 ]:
             showEdges=True, 
             edgeType=edgeType
         )
-        out.save("./out_{thresh}_{edge}.jpg".format(thresh=thresh, edge=edgeType))
+        out.save("./out/out_{thresh}_{edge}.jpg".format(thresh=thresh, edge=edgeType))
         out.close()
 
 
