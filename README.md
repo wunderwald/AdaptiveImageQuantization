@@ -8,6 +8,7 @@ Call quantize with the following params:
 - inputPixels: a 2d array of rgb-tuples
 - outputImage: a PIL image with dims = cell
 - thresh: the threshold for sum-of-squares deviations inside of cells
+- minCellDims: array where 0: minWidth, 1: minHeight. Smaller cells are ignored
 - showEdges: bool, indicates wether cell edges are drawn
 - edgeType: if showEdges==true, determines the type of edges. Options: 'black' (default), 'white', 'inv' (inverted average color of cell)
 
