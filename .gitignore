@@ -1,3 +1,6 @@
 *.png
 *.jpg
+
+# demo content
 !/out/*.jpg
+!input.jpg
