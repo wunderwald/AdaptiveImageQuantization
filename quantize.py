@@ -42,7 +42,7 @@ def getEdgeColor(edgeType, avgColor):
     return edgeColor
     
 
-def subdivideQuad(cell, dims, inputPixels, outputImage, thresh, showEdges, edgeType):
+def subdivideQuad(cell, dims, inputPixels, outputImage, thresh, minCellDims, showEdges, edgeType):
     [ width, height ] = dims
     halfWidth = math.floor(width / 2)
     halfHeight = math.floor(height / 2)
@@ -50,19 +50,19 @@ def subdivideQuad(cell, dims, inputPixels, outputImage, thresh, showEdges, edgeT
     cell1 = [ cell[0] + halfWidth, cell[1], cell[2], cell[1] + halfHeight]
     cell2 = [ cell[0], cell[1] + halfHeight, cell[0] + halfWidth, cell[3]]
     cell3 = [ cell[0] + halfWidth, cell[1] + halfHeight, cell[2], cell[3]]
-    quantize(cell0, inputPixels=inputPixels, outputImage=outputImage, thresh=thresh, showEdges=showEdges, edgeType=edgeType)
-    quantize(cell1, inputPixels=inputPixels, outputImage=outputImage, thresh=thresh, showEdges=showEdges, edgeType=edgeType)
-    quantize(cell2, inputPixels=inputPixels, outputImage=outputImage, thresh=thresh, showEdges=showEdges, edgeType=edgeType)
-    quantize(cell3, inputPixels=inputPixels, outputImage=outputImage, thresh=thresh, showEdges=showEdges, edgeType=edgeType)
+    quantize(cell0, inputPixels=inputPixels, outputImage=outputImage, thresh=thresh, minCellDims=minCellDims, showEdges=showEdges, edgeType=edgeType)
+    quantize(cell1, inputPixels=inputPixels, outputImage=outputImage, thresh=thresh, minCellDims=minCellDims, showEdges=showEdges, edgeType=edgeType)
+    quantize(cell2, inputPixels=inputPixels, outputImage=outputImage, thresh=thresh, minCellDims=minCellDims, showEdges=showEdges, edgeType=edgeType)
+    quantize(cell3, inputPixels=inputPixels, outputImage=outputImage, thresh=thresh, minCellDims=minCellDims, showEdges=showEdges, edgeType=edgeType)
 
 
-def quantize(cell, inputPixels, outputImage, thresh, showEdges=True, edgeType="black"):
+def quantize(cell, inputPixels, outputImage, thresh, minCellDims = [2,2], showEdges=True, edgeType="black"):
 
     width = cell[2] - cell[0]
     height = cell[3] - cell[1]
 
     # write original pixels for cells of less than 2x2 px
-    if(width <= 2 or height <= 2):
+    if(width <= minCellDims[0] or height <= minCellDims[1] or width <= 2 or height <= 2):
         for y in range(cell[1], cell[3]):
             for x in range(cell[0], cell[2]):
                 outputImage.putpixel(xy=(x, y), value=inputPixels[x, y])
@@ -88,6 +88,7 @@ def quantize(cell, inputPixels, outputImage, thresh, showEdges=True, edgeType="b
         inputPixels=inputPixels,
         outputImage=outputImage,
         thresh=thresh,
+        minCellDims=minCellDims,
         showEdges=showEdges,
         edgeType=edgeType
     )
