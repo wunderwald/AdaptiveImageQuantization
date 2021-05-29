@@ -4,7 +4,7 @@
 
 Call quantize with the following params:
 
-- cell: a square that defines the region that will be quantized (x0, y0, x1, y1) 
+- cell: a square that defines the region that will be quantized (x0, y0, x1, y1)
 - inputPixels: a 2d array of rgb-tuples
 - outputImage: a PIL image with dims = cell
 - thresh: the threshold for sum-of-squares deviations inside of cells
