@@ -4,6 +4,7 @@
 #  -> if standard deviation < thresh: mark as done, set color to average or median
 #  -> else: split cell into 4 new cells, call recursion
 
+from os import error
 from PIL import Image
 from quantize import quantize
 import math
@@ -13,6 +14,9 @@ import math
 img = Image.open("./input.jpg")
 pixels = img.load()
 dims = img.size
+
+if(dims[0] != dims[1]):
+    error("The code currently only works for sqaure images.")
 
 for thresh in [ 690, 4200, 6900, 42000, 420000, 690000 ]:
     # no edges
