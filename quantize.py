@@ -42,6 +42,20 @@ def getEdgeColor(edgeType, avgColor):
     return edgeColor
     
 
+def subdivideQuad(cell, dims, inputPixels, outputImage, thresh, showEdges, edgeType):
+    [ width, height ] = dims
+    halfWidth = math.floor(width / 2)
+    halfHeight = math.floor(height / 2)
+    cell0 = [ cell[0], cell[1], cell[0] + halfWidth, cell[1] + halfHeight]
+    cell1 = [ cell[0] + halfWidth, cell[1], cell[2], cell[1] + halfHeight]
+    cell2 = [ cell[0], cell[1] + halfHeight, cell[0] + halfWidth, cell[3]]
+    cell3 = [ cell[0] + halfWidth, cell[1] + halfHeight, cell[2], cell[3]]
+    quantize(cell0, inputPixels=inputPixels, outputImage=outputImage, thresh=thresh, showEdges=showEdges, edgeType=edgeType)
+    quantize(cell1, inputPixels=inputPixels, outputImage=outputImage, thresh=thresh, showEdges=showEdges, edgeType=edgeType)
+    quantize(cell2, inputPixels=inputPixels, outputImage=outputImage, thresh=thresh, showEdges=showEdges, edgeType=edgeType)
+    quantize(cell3, inputPixels=inputPixels, outputImage=outputImage, thresh=thresh, showEdges=showEdges, edgeType=edgeType)
+
+
 def quantize(cell, inputPixels, outputImage, thresh, showEdges=True, edgeType="black"):
 
     width = cell[2] - cell[0]
@@ -67,16 +81,15 @@ def quantize(cell, inputPixels, outputImage, thresh, showEdges=True, edgeType="b
                     outputImage.putpixel(xy=(x, y), value=avgColor)
         return
     
-    # if deviation is largen than threshold, subdivide cell
-    halfWidth = math.floor(width / 2)
-    halfHeight = math.floor(height / 2)
-    cell0 = [ cell[0], cell[1], cell[0] + halfWidth, cell[1] + halfHeight]
-    cell1 = [ cell[0] + halfWidth, cell[1], cell[2], cell[1] + halfHeight]
-    cell2 = [ cell[0], cell[1] + halfHeight, cell[0] + halfWidth, cell[3]]
-    cell3 = [ cell[0] + halfWidth, cell[1] + halfHeight, cell[2], cell[3]]
-    quantize(cell0, inputPixels=inputPixels, outputImage=outputImage, thresh=thresh, showEdges=showEdges, edgeType=edgeType)
-    quantize(cell1, inputPixels=inputPixels, outputImage=outputImage, thresh=thresh, showEdges=showEdges, edgeType=edgeType)
-    quantize(cell2, inputPixels=inputPixels, outputImage=outputImage, thresh=thresh, showEdges=showEdges, edgeType=edgeType)
-    quantize(cell3, inputPixels=inputPixels, outputImage=outputImage, thresh=thresh, showEdges=showEdges, edgeType=edgeType)
+    # if deviation is largen than threshold, subdivide cell and quantize subdivisions
+    subdivideQuad(
+        cell=cell, 
+        dims=[ width, height ],
+        inputPixels=inputPixels,
+        outputImage=outputImage,
+        thresh=thresh,
+        showEdges=showEdges,
+        edgeType=edgeType
+    )
 
 

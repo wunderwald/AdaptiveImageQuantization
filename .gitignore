@@ -2,5 +2,5 @@
 *.jpg
 
 # demo content
-!/out/*.jpg
-!input.jpg
+!/demoOut/*
+!demoInput.jpg
