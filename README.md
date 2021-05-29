@@ -6,3 +6,7 @@ Raw
 
 Quantized (edgeType='inv', thresh=690000)
 !["Demo Image (quantized)"](https://github.com/wunderwald/AdaptiveImageQuantization/blob/master/out/out_690000_inv.jpg)
+
+
+Quantized (edgeType='black', thresh=6900)
+!["Demo Image (quantized)"](https://github.com/wunderwald/AdaptiveImageQuantization/blob/master/out/out_6900_black.jpg)
