@@ -1,9 +1,7 @@
 # AdaptiveImageQuantization
 
-## Usage (via demo script)
-place input image in root directory, call it "input.jpg". Run the script main and the quantization results for a set of different parametrizations will be written to ./out.
+## Usage
 
-## Usage (quantize.py)
 Call quantize with the following params:
 
 - cell: a square that defines the region that will be quantized (x0, y0, x1, y1) 
@@ -16,11 +14,14 @@ Call quantize with the following params:
 ## Demo
 
 ### Raw
-!["Demo Image (raw)"](https://github.com/wunderwald/AdaptiveImageQuantization/blob/master/input.jpg)
+
+!["Demo Image (raw)"](https://github.com/wunderwald/AdaptiveImageQuantization/blob/master/inputDemo.jpg)
 
 ### Quantized (edgeType='inv', thresh=690000)
-!["Demo Image (quantized)"](https://github.com/wunderwald/AdaptiveImageQuantization/blob/master/out/out_690000_inv.jpg)
+
+!["Demo Image (quantized)"](https://github.com/wunderwald/AdaptiveImageQuantization/blob/master/demoOut/out_690000_inv.jpg)
 
 
 ### Quantized (edgeType='black', thresh=6900)
-!["Demo Image (quantized)"](https://github.com/wunderwald/AdaptiveImageQuantization/blob/master/out/out_6900_black.jpg)
+
+!["Demo Image (quantized)"](https://github.com/wunderwald/AdaptiveImageQuantization/blob/master/demoOut/out_6900_black.jpg)
