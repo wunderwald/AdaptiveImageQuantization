@@ -26,3 +26,7 @@ Call quantize with the following params:
 ### Quantized (edgeType='white', thresh=42000, minCellDims=[6, 6])
 
 !["Demo Image (quantized)"](https://github.com/wunderwald/AdaptiveImageQuantization/blob/master/demoOut/out_42000_white_min6x6.png)
+
+### Quantized (edgeType='inv', thresh=6900, minCellDims=[4, 4], secret tripp mode)
+
+!["Demo Image (quantized)"](https://github.com/wunderwald/AdaptiveImageQuantization/blob/master/demoOut/tripp_6900_inv_min4x4.png)
