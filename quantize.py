@@ -29,17 +29,37 @@ def inv(pixel):
         255 - pixel[2]
     )
 
+def limit(value, range):
+    if(value < range[0]):
+        return range[0]
+    if(value > range[1]):
+        return range[1]
+    return value
+
+def brightness(color, factor):
+    r = math.floor(color[0] * factor)
+    g = math.floor(color[1] * factor)
+    b = math.floor(color[2] * factor)
+    return (
+        limit(r, [0, 255]),
+        limit(g, [0, 255]),
+        limit(b, [0, 255]),
+    )
+
 def getEdgeColor(edgeType, avgColor):
-    if(edgeType not in [ "inv", "black", "white" ]):
+    if(edgeType not in [ "inv", "black", "white", "darken", "ligthen" ]):
         print("Invalid edge Type. Options are inv, black, white. Black is used as default. ")
-    edgeColor = (0, 0, 0)
     if(edgeType == 'inv'):
-        edgeColor = inv(avgColor)
+        return inv(avgColor)
     if(edgeType == 'black'):
-        edgeColor = (0, 0, 0)
+        return (0, 0, 0)
     if(edgeType == 'white'):
-        edgeColor = (255, 255, 255)
-    return edgeColor
+        return (255, 255, 255)
+    if(edgeType == 'darken'):
+        return brightness(avgColor, .69)
+    if(edgeType == 'lighten'):
+        return brightness(avgColor, 1.21)
+    return (0, 0, 0)
     
 
 def subdivideQuad(cell, dims, inputPixels, outputImage, thresh, minCellDims, showEdges, edgeType):

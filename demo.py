@@ -12,9 +12,9 @@ def parameterization():
 
     if(dims[0] != dims[1]):
         error("The code currently only works for sqaure images.")
-    for minCellDims in [ [4, 4], [6, 6], [8, 8] ]:
+    for minCellDims in [ [4, 4], [6, 6], [10, 10] ]:
         for thresh in [ 6900, 42000, 420000, 690000 ]:
-            for edgeType in [ "inv", "black", "white" ]:
+            for edgeType in [ "inv", "black", "white", "darken", "lighten" ]:
                 print("{e} | {t} | {w}x{h}".format(e=edgeType, t=thresh, w=minCellDims[0], h=minCellDims[1]))
 
                 out = Image.new(mode="RGB", size=dims)
