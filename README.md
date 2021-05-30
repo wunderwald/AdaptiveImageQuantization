@@ -16,7 +16,7 @@ Call quantize with the following params:
 
 ### Raw
 
-!["Demo Image (raw)"](https://github.com/wunderwald/AdaptiveImageQuantization/blob/master/inputDemo.jpg)
+!["Demo Image (raw)"](https://github.com/wunderwald/AdaptiveImageQuantization/blob/master/demoInput.jpg)
 
 ### Quantized (edgeType='inv', thresh=6900, minCellDims=[6, 6])
 
