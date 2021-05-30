@@ -10,7 +10,7 @@ Call quantize with the following params:
 - thresh: the threshold for sum-of-squares deviations inside of cells
 - minCellDims: array where 0: minWidth, 1: minHeight. Smaller cells are ignored (default: 2, 2)
 - showEdges: bool, indicates wether cell edges are drawn
-- edgeType: if showEdges==true, determines the type of edges. Options: 'black' (default), 'white', 'inv' (inverted average color of cell)
+- edgeType: if showEdges==true, determines the type of edges. Options: 'black' (default), 'white', 'inv', 'darken', 'lighten')
 
 ## Demo
 
@@ -18,11 +18,11 @@ Call quantize with the following params:
 
 !["Demo Image (raw)"](https://github.com/wunderwald/AdaptiveImageQuantization/blob/master/inputDemo.jpg)
 
-### Quantized (edgeType='inv', thresh=690000)
+### Quantized (edgeType='inv', thresh=6900, minCellDims=[6, 6])
 
-!["Demo Image (quantized)"](https://github.com/wunderwald/AdaptiveImageQuantization/blob/master/demoOut/out_690000_inv.jpg)
+!["Demo Image (quantized)"](https://github.com/wunderwald/AdaptiveImageQuantization/blob/master/demoOut/out_6900_inv_min6x6.png)
 
 
-### Quantized (edgeType='black', thresh=6900)
+### Quantized (edgeType='white', thresh=42000, minCellDims=[6, 6])
 
-!["Demo Image (quantized)"](https://github.com/wunderwald/AdaptiveImageQuantization/blob/master/demoOut/out_6900_black.jpg)
+!["Demo Image (quantized)"](https://github.com/wunderwald/AdaptiveImageQuantization/blob/master/demoOut/out_42000_white_min6x6.png)

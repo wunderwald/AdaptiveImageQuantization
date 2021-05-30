@@ -47,7 +47,7 @@ def brightness(color, factor):
     )
 
 def getEdgeColor(edgeType, avgColor):
-    if(edgeType not in [ "inv", "black", "white", "darken", "ligthen" ]):
+    if(edgeType not in [ "inv", "black", "white", "darken", "lighten" ]):
         print("Invalid edge Type. Options are inv, black, white. Black is used as default. ")
     if(edgeType == 'inv'):
         return inv(avgColor)
