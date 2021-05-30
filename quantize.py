@@ -99,6 +99,9 @@ def quantize(cell, inputPixels, outputImage, thresh, minCellDims = [2,2], showEd
                     outputImage.putpixel(xy=(x, y), value=edgeColor)
                 else:    
                     outputImage.putpixel(xy=(x, y), value=avgColor)
+                    # hidden tripp mode
+                    # edgeColor = getEdgeColor(edgeType=edgeType, avgColor=avgColor)
+                    # outputImage.putpixel(xy=(x, y), value=edgeColor)
         return
     
     # if deviation is largen than threshold, subdivide cell and quantize subdivisions
